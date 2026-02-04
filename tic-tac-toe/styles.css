@@ -1,0 +1,233 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --bg-start: #fff2da;
+  --bg-end: #e3f6f5;
+  --ink: #1f2937;
+  --muted: #5f6c7b;
+  --panel: #ffffff;
+  --shadow: 0 18px 40px rgba(15, 23, 42, 0.12);
+  --x-color: #f25f5c;
+  --o-color: #2ec4b6;
+  --accent: #ffb703;
+}
+
+body {
+  margin: 0;
+  font-family: "Space Grotesk", "Segoe UI", sans-serif;
+  color: var(--ink);
+  background: radial-gradient(circle at 20% 20%, #ffffff 0%, transparent 35%),
+    radial-gradient(circle at 80% 10%, #ffe9c7 0%, transparent 45%),
+    radial-gradient(circle at 30% 80%, #d8f3f0 0%, transparent 40%),
+    linear-gradient(135deg, var(--bg-start), var(--bg-end));
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.page {
+  width: min(640px, 100%);
+  display: grid;
+  gap: 20px;
+}
+
+.header {
+  text-align: center;
+  display: grid;
+  gap: 6px;
+}
+
+.title {
+  font-size: clamp(28px, 6vw, 42px);
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.subtitle {
+  font-size: 15px;
+  color: var(--muted);
+}
+
+.game {
+  display: flex;
+  justify-content: center;
+}
+
+.panel {
+  background: var(--panel);
+  border-radius: 24px;
+  box-shadow: var(--shadow);
+  padding: 26px;
+  width: min(520px, 100%);
+  display: grid;
+  gap: 18px;
+}
+
+.status {
+  padding: 12px 16px;
+  border-radius: 999px;
+  background: #f8fafc;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  font-weight: 600;
+  text-align: center;
+}
+
+.mode-toggle {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: #f8fafc;
+  border-radius: 999px;
+  padding: 6px;
+  gap: 6px;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+.toggle-btn {
+  border: none;
+  background: transparent;
+  padding: 10px 14px;
+  border-radius: 999px;
+  font-weight: 600;
+  color: var(--muted);
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.toggle-btn.active {
+  background: #ffffff;
+  color: var(--ink);
+  box-shadow: 0 10px 20px rgba(15, 23, 42, 0.08);
+}
+
+.online-panel {
+  display: grid;
+  gap: 12px;
+  background: #fbfdff;
+  border-radius: 18px;
+  padding: 14px;
+  border: 1px dashed rgba(15, 23, 42, 0.1);
+}
+
+.room-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.join {
+  display: flex;
+  gap: 8px;
+  flex: 1;
+  justify-content: flex-end;
+}
+
+.input {
+  flex: 1;
+  min-width: 140px;
+  padding: 10px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  font-family: inherit;
+}
+
+.room-info {
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.cell {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 18px;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  background: #ffffff;
+  font-size: clamp(36px, 6vw, 54px);
+  font-weight: 700;
+  color: var(--ink);
+  cursor: pointer;
+  box-shadow: 0 10px 20px rgba(15, 23, 42, 0.08);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.cell:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(15, 23, 42, 0.12);
+}
+
+.cell:disabled {
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: 0 8px 16px rgba(15, 23, 42, 0.08);
+}
+
+.cell.x {
+  color: var(--x-color);
+}
+
+.cell.o {
+  color: var(--o-color);
+}
+
+.cell.win {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(255, 183, 3, 0.35);
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+}
+
+.btn {
+  border: none;
+  background: var(--ink);
+  color: #ffffff;
+  padding: 12px 22px;
+  border-radius: 999px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+.btn.ghost {
+  background: #ffffff;
+  color: var(--ink);
+  border: 1px solid rgba(15, 23, 42, 0.12);
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  opacity: 0.92;
+}
+
+.footer {
+  text-align: center;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.hidden {
+  display: none;
+}
+
+@media (max-width: 520px) {
+  .panel {
+    padding: 20px;
+  }
+
+  .board {
+    gap: 10px;
+  }
+}
